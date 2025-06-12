@@ -18,7 +18,7 @@
 #### 設定内容
 
 ##### スイッチの設定
-[完全な設定ファイルを見る](/study01/configs/switch-config.txt)
+[全ての設定ファイルを見る](/study01/configs/switch-config.txt)
 
 **ホスト名の設定**
 ```
@@ -177,7 +177,7 @@ interface FastEthernet0/5
 - Ctrl+Shift+6 → コマンド表示を中断
 
 ##### ルータの設定  
-[完全な設定ファイルを見る](/study01/configs/router-config.txt)
+[全ての設定ファイルを見る](/study01/configs/router-config.txt)
 
 **ホスト名の設定**
 ```
