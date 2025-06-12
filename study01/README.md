@@ -13,12 +13,12 @@
 - **LANケーブル**: ×2本
 
 #### 構成図
-![ネットワーク構成図](images/session01/topology1.png)
+![ネットワーク構成図](/study01/images/topology1.png)
 
 #### 設定内容
 
 ##### スイッチの設定
-[完全な設定ファイルを見る](configs/session01/switch-config.txt)
+[完全な設定ファイルを見る](/study01/configs/switch-config.txt)
 
 **ホスト名の設定**
 ```
@@ -177,7 +177,7 @@ interface FastEthernet0/5
 - Ctrl+Shift+6 → コマンド表示を中断
 
 ##### ルータの設定  
-[完全な設定ファイルを見る](configs/session01/router-config.txt)
+[完全な設定ファイルを見る](/study01/configs/router-config.txt)
 
 **ホスト名の設定**
 ```
@@ -407,24 +407,24 @@ RTA#
 
 #### 検証PCの設定
 - 検証PCにIPアドレスを割り当てる
-![PC IPアドレス設定](images/session01/課題1_1.png)
+![PC IPアドレス設定](/study01/images/課題1_1.png)
 
 - IPアドレスの確認
-![PC IPアドレス確認](images/session01/課題1_2.png)
+![PC IPアドレス確認](/study01/images/課題1_2.png)
 
 ##### 検証①PCからルータへ疎通可能なことを確認する
-![Pingテスト結果](images/session01/課題1_3.png)
+![Pingテスト結果](/study01/images/課題1_3.png)
 
 ##### 検証②PCからルータへリモートログインが可能なことを確認する
-![Telnetログイン1](images/session01/課題1_4.png)
+![Telnetログイン1](/study01/images/課題1_4.png)
 
 ##### 設定したパスワードでログイン
 - 「Password:Cisco」を入力
-![Telnetログイン2](images/session01/課題1_5.png)
+![Telnetログイン2](/study01/images/課題1_5.png)
 
 ##### enableパスワードで特権モードへ移行
 - 「Password:Cisco」を入力
-![Telnetログイン3](images/session01/課題1_6.png)
+![Telnetログイン3](/study01/images/課題1_6.png)
 
 #### 学習成果・気付き
 
