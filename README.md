@@ -466,7 +466,7 @@ RTA#
 - #show ip interface brief → ルータに存在する全てのインターフェースを確認
 
 **機器選択について**
-- Cisco 891FJに近い性能の機種を調査し、機種番号によって使用用途・ポート構成・性能・値段などの違いがある
+- Cisco 891FJに近い性能の機種を調査し、機種番号によって使用用途・ポート構成・性能・値段などの違いがあること
 - Cisco 891FJ→小規模オフィス・SOHO（Small Office/Home Office）向け
 - Cisco 829→産業環境向け
 - Cisco Packet TracerにCisco 891FJがなかったため、同じCisco800シリーズのISR (Integrated Services Router)で性能が近いCisco 829を使用して検証
