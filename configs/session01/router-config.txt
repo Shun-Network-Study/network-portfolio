@@ -46,10 +46,10 @@ GigabitEthernet0/1     unassigned      YES unset  administratively down down
 GigabitEthernet0/2     unassigned      YES unset  administratively down down 
 Vlan1                  unassigned      YES unset  administratively down down
 RTA#
-RTA#show running-config
+RTA#show running-config 
 Building configuration...
 
-Current configuration : 747 bytes
+Current configuration : 788 bytes
 !
 version 15.1
 no service timestamps log datetime msec
@@ -63,9 +63,40 @@ hostname RTA
 enable secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
 enable password Cisco
 !
-（省略）
-
-（省略）
+!
+!
+!
+!
+!
+ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX15245NYS-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.1.254 255.255.255.0
+ duplex auto
+ speed auto
 !
 interface GigabitEthernet0/1
  no ip address
@@ -83,8 +114,7 @@ interface Vlan1
  no ip address
  shutdown
 !
-（省略）
-
+RTA#
 RTA#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
 RTA(config)#line vty 0 4
