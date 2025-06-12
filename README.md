@@ -38,7 +38,7 @@
 - **LANケーブル**: ×2本
 
 #### 構成図
-![ネットワーク構成図](images/session01/network-diagram.png)
+![ネットワーク構成図](images/session01/topology1.png)
 
 #### 設定内容
 
@@ -91,13 +91,13 @@ RTA(config-line)#login
 #### 検証結果
 
 ##### PC設定
-![PC IPアドレス設定](images/session01/pc-ip-config.png)
+![PC IPアドレス設定](images/session01/課題1_1.png)
 
 ##### 疎通確認テスト
-![Pingテスト結果](images/session01/ping-test.png)
+![Pingテスト結果](images/session01/課題1_2.png)
 
 ##### リモートログインテスト
-![Telnetログイン](images/session01/telnet-test.png)
+![Telnetログイン](images/session01/課題1_3.png)
 
 #### 学習成果・気付き
 
