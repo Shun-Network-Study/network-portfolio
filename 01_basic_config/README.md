@@ -4,7 +4,7 @@
 Packet Tracerを用いて、Ciscoルータとスイッチの初期設定・疎通確認を実施。
 
 ## ネットワーク構成図
-![topology](./topology.png)
+![topology](./topology1.png)
 
 ## 機器構成
 - Router: Cisco 2911
