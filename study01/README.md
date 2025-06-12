@@ -440,11 +440,7 @@ RTA#
 - #show ip interface brief → ルータに存在する全てのインターフェースを確認
 
 **機器選択について**
-- Cisco 891FJに近い性能の機種を調査し、機種番号によって使用用途・ポート構成・性能・値段などの違いがあること
-- Cisco 891FJ→小規模オフィス・SOHO（Small Office/Home Office）向け
-- Cisco 829→産業環境向け
-- Cisco Packet TracerにCisco 891FJがなかったため、同じCisco800シリーズのISR (Integrated Services Router)で性能が近いCisco 829を使用して検証
-- Cisco 829では多くのコマンド制限があり、エラーが頻発（インターフェースの指定不可・IPアドレスの割り当て不可・正規表現でコマンド入力後も、% Invalid input detected at '^' marker.のエラー表示など）
-- ChatGPT・Claude・Geminiを活用し、Cisco 891FJに性能が近く、Cisco Packet Tracerによるコマンド制限が少ない機種を調査
-- Cisco 2911を選択（企業向けルータ・中小規模のネットワークで使用、Cisco Packet Tracerによるコマンド制限が少ないため）
+- 当初Cisco 891FJ（小規模オフィス・SOHO向け）での検証を予定していたが、Cisco Packet Tracerに該当機種がなかったため、同じ800シリーズのCisco 829（産業環境向け）を使用
+- Cisco 829では多くのコマンド制限があり、インターフェース指定やIPアドレス割り当てでエラーが頻発
+- AI（ChatGPT・Claude・Gemini）を活用して代替機種を調査し、コマンド制限が少ないCisco 2911（企業向け・中小規模ネットワーク用）を選択
 - 結果的にコマンド制限なく検証を完了
