@@ -3,19 +3,11 @@ Switch#conf t
 Enter configuration commands, one per line.  End with CNTL/Z.
 Switch(config)#hostname SWA
 SWA(config)#
-
-enableパスワード
-
 SWA(config)#enable password Cisco
 SWA(config)#enable secret Cisco
 The enable secret you have chosen is the same as your enable password.
 This is not recommended.  Re-enter the enable secret.
 SWA(config)#
-
-使用しないインターフェースの無効化（セキュリティ対策のため）
-
-#show interfaces statusコマンドで、スイッチに存在する全てのインターフェースを確認
-
 SWA(config)#end
 SWA#
 %SYS-5-CONFIG_I: Configured from console by console
@@ -108,12 +100,8 @@ SWA(config-if-range)#shutdown
 %LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to administratively down
 
 %LINK-5-CHANGED: Interface GigabitEthernet0/2, changed state to administratively down
-SWA(config-if-range)#exit
-SWA(config)#
-
-設定内容の確認
-
-SWA#show running-config
+SWA(config-if-range)#end
+SWA#show running-config 
 Building configuration...
 
 Current configuration : 1388 bytes
@@ -128,11 +116,13 @@ hostname SWA
 enable secret 5 $1$mERr$YlCkLMcTYWwkF1Ccndtll.
 enable password Cisco
 !
-（省略）
-
-使用しないポートの無効化の確認
-
-（省略）
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
 !
 interface FastEthernet0/1
 !
@@ -148,6 +138,36 @@ interface FastEthernet0/4
 interface FastEthernet0/5
  shutdown
 !
-（省略）
-
-Ctrl+Shift+6でコマンド表示を中断
+interface FastEthernet0/6
+ shutdown
+!
+interface FastEthernet0/7
+ shutdown
+!
+interface FastEthernet0/8
+ shutdown
+!
+interface FastEthernet0/9
+ shutdown
+!
+interface FastEthernet0/10
+ shutdown
+!
+interface FastEthernet0/11
+ shutdown
+!
+interface FastEthernet0/12
+ shutdown
+!
+interface FastEthernet0/13
+ shutdown
+!
+interface FastEthernet0/14
+ shutdown
+!
+interface FastEthernet0/15
+ shutdown
+!
+interface FastEthernet0/16
+ shutdown
+ --More-- 
