@@ -94,6 +94,7 @@ spanning-tree mode pvst
 !
 !
 interface GigabitEthernet0/0
+ no ip address
  duplex auto
  speed auto
 !
