@@ -219,3 +219,8 @@ end
 
 
 RTA#
+RTA#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+RTA#
