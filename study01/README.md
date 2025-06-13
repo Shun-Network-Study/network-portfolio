@@ -414,6 +414,15 @@ end
 RTA#
 ```
 
+**設定の保存**
+```
+RTA#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+RTA#
+```
+
 ### 検証PCの設定
 - 検証PCにIPアドレスを割り当てる
 ![PC IPアドレス設定](/study01/images/課題1_1.png)
