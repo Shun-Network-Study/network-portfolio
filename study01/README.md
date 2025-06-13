@@ -12,7 +12,7 @@
 - **LANケーブル** ×2本
 
 ## 構成図
-![ネットワーク構成図](/study01/images/topology1.png)
+![構成図](/study01/images/topology1.png)
 
 ## 設定内容
 
@@ -425,25 +425,25 @@ RTA#
 
 ### 検証PCの設定
 - 検証PCにIPアドレスを割り当てる
-![PC IPアドレス設定](/study01/images/課題1_1.png)
+![検証PCにIPアドレスを割り当てる](/study01/images/課題1_1.png)
 
 - IPアドレスの確認
-![PC IPアドレス確認](/study01/images/課題1_2.png)
+![IPアドレスの確認](/study01/images/課題1_2.png)
 
 ### 検証①PCからルータへ疎通可能なことを確認する
 - パケットを4回送信し、全て受信していることを確認
-![Pingテスト結果](/study01/images/課題1_3.png)
+![PCからルータへ疎通可能なことを確認](/study01/images/課題1_3.png)
 
 ### 検証②PCからルータへリモートログインが可能なことを確認する
-![Telnetログイン1](/study01/images/課題1_4.png)
+![PCからルータへリモートログインが可能なことを確認](/study01/images/課題1_4.png)
 
 ### Telnetでのログイン成功後、設定したパスワードでログイン
 - 「Password:Cisco」を入力
-![Telnetログイン2](/study01/images/課題1_5.png)
+![Telnetでのログイン成功後、設定したパスワードでログイン](/study01/images/課題1_5.png)
 
 ### enableパスワードで特権モードへ移行
 - 「Password:Cisco」を入力
-![Telnetログイン3](/study01/images/課題1_6.png)
+![enableパスワードで特権モードへ移行](/study01/images/課題1_6.png)
 
 ### 学習成果・気付き
 
