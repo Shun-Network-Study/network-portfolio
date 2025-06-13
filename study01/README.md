@@ -38,7 +38,7 @@ The enable secret you have chosen is the same as your enable password.
 This is not recommended.  Re-enter the enable secret.
 SWA(config)#
 ```
-- enable passwordコマンドとenable secretコマンドに同じパスワード（Cisco）を設定すると、設定自体は可能だが、セキュリティ上推奨されないため、要件に応じて使い分ける必要がある。
+- enable passwordコマンドとenable secretコマンドに同じパスワード（Cisco）を設定すると、設定自体は可能だが、セキュリティ上推奨されないため、要件に応じて使い分ける必要がある
 
 **使用しないインターフェースの無効化（セキュリティ対策のため）**
 - #show interfaces status → スイッチに存在する全てのインターフェースを確認
