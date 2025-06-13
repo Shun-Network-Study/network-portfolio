@@ -8,8 +8,8 @@
 ## 使用機器
 - **ルータ**: Cisco 2911 ×1台　※Cisco 891FJがなかったため、コマンド制限の少ないCisco 2911を使用
 - **L2スイッチ**: Catalyst2960 ×1台
-- **検証用PC**: ×1台
-- **LANケーブル**: ×2本
+- **検証用PC** ×1台
+- **LANケーブル** ×2本
 
 ## 構成図
 ![ネットワーク構成図](/study01/images/topology1.png)
@@ -36,7 +36,7 @@ The enable secret you have chosen is the same as your enable password.
 This is not recommended.  Re-enter the enable secret.
 SWA(config)#
 ```
-- enable passwordコマンドとenable secretコマンドで同じパスワード（Cisco）に設定をすると、パスワード設定は可能だが推奨されていない設定なので、要件に合わせて使い分ける必要がある
+- enable passwordコマンドとenable secretコマンドに同じパスワード（Cisco）を設定すると、設定自体は可能だが、セキュリティ上推奨されないため、要件に応じて使い分ける必要がある。
 
 **使用しないインターフェースの無効化（セキュリティ対策のため）**
 - #show interfaces status → スイッチに存在する全てのインターフェースを確認
@@ -448,6 +448,7 @@ RTA#
 ### 学習成果・気付き
 
 **技術的な学び**
+- enable passwordコマンドとenable secretコマンドに同じパスワード（Cisco）を設定すると、設定自体は可能だが、セキュリティ上推奨されないため、要件に応じて使い分ける必要がある
 - セキュリティ対策として使用しないインターフェースの無効化が重要
 - 検証用PCは、検証ネットワークに合わせたIPアドレスの設定がその都度必要
 - インターフェースにIPアドレスを設定することで、リモートログインの設定が可能になる
