@@ -171,3 +171,9 @@ interface FastEthernet0/15
 interface FastEthernet0/16
  shutdown
  --More-- 
+SWA#
+SWA#copy running-config startup-config 
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SWA#
