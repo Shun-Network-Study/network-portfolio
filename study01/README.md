@@ -36,6 +36,7 @@ The enable secret you have chosen is the same as your enable password.
 This is not recommended.  Re-enter the enable secret.
 SWA(config)#
 ```
+- enable passwordコマンドとenable secretコマンドで同じパスワード（Cisco）に設定をすると、パスワード設定は可能だが推奨されていない設定なので、要件に合わせて使い分ける必要がある
 
 **使用しないインターフェースの無効化（セキュリティ対策のため）**
 - #show interfaces status → スイッチに存在する全てのインターフェースを確認
@@ -174,6 +175,15 @@ interface FastEthernet0/5
 （省略）
 ```
 - Ctrl+Shift+6 → コマンド表示を中断
+
+**設定の保存**
+```
+SWA#copy running-config startup-config 
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SWA#
+```
 
 ### ルータの設定  
 [全ての設定ファイルを見る](/study01/configs/router-config.txt)
