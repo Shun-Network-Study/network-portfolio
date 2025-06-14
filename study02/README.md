@@ -21,7 +21,7 @@
 ## 設定内容
 
 ### ルータ（RTA）の設定
-[全ての設定ファイルを見る](/study02/configs/router-config-RTA.txt)
+[ルータ（RTA）の全ての設定ファイルを見る](/study02/configs/router-config-RTA.txt)
 
 **ホスト名の設定**
 ```
@@ -186,7 +186,7 @@ RTA#
 ```
 
 ### ルータ（RTB）の設定
-[全ての設定ファイルを見る](/study02/configs/router-config-RTB.txt)
+[ルータ（RTB）の全ての設定ファイルを見る](/study02/configs/router-config-RTB.txt)
 
 **ホスト名の設定**
 ```
@@ -345,7 +345,7 @@ RTB#
 ```
 
 ### スイッチ（SWA）の設定
-[全ての設定ファイルを見る](/study02/configs/switch-config-SWA.txt)
+[スイッチ（SWA）の全ての設定ファイルを見る](/study02/configs/switch-config-SWA.txt)
 
 **ホスト名の設定**
 ```
@@ -408,7 +408,7 @@ SWA#
 SWA#
 ```
 ### スイッチ（SWB）の設定
-[全ての設定ファイルを見る](/study02/configs/switch-config-SWB.txt)
+[スイッチ（SWB）の全ての設定ファイルを見る](/study02/configs/switch-config-SWB.txt)
 
 **ホスト名の設定**
 ```
