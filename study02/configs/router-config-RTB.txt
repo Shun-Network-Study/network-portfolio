@@ -1,1 +1,206 @@
+Router>en
+Router#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Router(config)#hostname RTB
+RTB(config)#enable password Cisco
+RTB(config)#line vty 0 4
+RTB(config-line)#password Cisco
+RTB(config-line)#login
+RTB(config-line)#exit
+RTB(config)#int
+RTB(config)#interface Gi
+RTB(config)#interface GigabitEthernet 0/0
+RTB(config-if)#ip address 192.168.2.254 255.255.255.0
+RTB(config-if)#no shutdown
 
+RTB(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/0, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/0, changed state to up
+
+RTB(config-if)#exit
+RTB(config)#inter
+RTB(config)#interface Gi
+RTB(config)#interface GigabitEthernet 0/1
+RTB(config-if)#ip address 192.168.3.2 255.255.255.0
+RTB(config-if)#no shutdown
+
+RTB(config-if)#
+%LINK-5-CHANGED: Interface GigabitEthernet0/1, changed state to up
+
+%LINEPROTO-5-UPDOWN: Line protocol on Interface GigabitEthernet0/1, changed state to up
+
+RTB(config-if)#end
+RTB#
+%SYS-5-CONFIG_I: Configured from console by console
+
+RTB#show run
+Building configuration...
+
+Current configuration : 757 bytes
+!
+version 15.1
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname RTB
+!
+!
+!
+enable password Cisco
+!
+!
+!
+!
+!
+!
+no ip cef
+no ipv6 cef
+!
+!
+!
+!
+license udi pid CISCO2911/K9 sn FTX15246438-
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+!
+!
+!
+!
+!
+!
+interface GigabitEthernet0/0
+ ip address 192.168.2.254 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/1
+ ip address 192.168.3.2 255.255.255.0
+ duplex auto
+ speed auto
+!
+interface GigabitEthernet0/2
+ no ip address
+ duplex auto
+ speed auto
+ shutdown
+!
+interface Vlan1
+ no ip address
+ shutdown
+!
+ip classless
+!
+ip flow-export version 9
+!
+!
+!
+!
+!
+!
+!
+line con 0
+!
+line aux 0
+!
+line vty 0 4
+ password Cisco
+ login
+!
+!
+!
+end
+
+
+RTB#
+RTB#
+RTB#
+RTB#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+RTB#
+
+RTB>en
+Password: 
+RTB#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+RTB(config)#ip route 192.168.1.0 255.255.255.0 192.168.3.1
+RTB(config)#end
+RTB#
+%SYS-5-CONFIG_I: Configured from console by console
+
+RTB#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+S    192.168.1.0/24 [1/0] via 192.168.3.1
+     192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.2.0/24 is directly connected, GigabitEthernet0/0
+L       192.168.2.254/32 is directly connected, GigabitEthernet0/0
+     192.168.3.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.3.0/24 is directly connected, GigabitEthernet0/1
+L       192.168.3.2/32 is directly connected, GigabitEthernet0/1
+
+RTB#
+
+RTB>en
+Password: 
+RTB#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+RTB(config)#no ip route 192.168.1.0 255.255.255.0 192.168.3.1
+RTB(config)#router ospf 1
+RTB(config-router)#network 192.168.2.254 0.0.0.0 area 0
+RTB(config-router)#network 192.168.3.2 0.0.0.0 area 0
+RTB(config-router)#
+03:32:03: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.3.1 on GigabitEthernet0/1 from LOADING to FULL, Loading Done
+
+RTB(config-router)#
+```
+
+```
+03:32:03: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.3.1 on GigabitEthernet0/1 from LOADING to FULL, Loading Done
+
+RTB#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, E - EGP
+       i - IS-IS, L1 - IS-IS level-1, L2 - IS-IS level-2, ia - IS-IS inter area
+       * - candidate default, U - per-user static route, o - ODR
+       P - periodic downloaded static route
+
+Gateway of last resort is not set
+
+O    192.168.1.0/24 [110/2] via 192.168.3.1, 00:00:46, GigabitEthernet0/1
+     192.168.2.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.2.0/24 is directly connected, GigabitEthernet0/0
+L       192.168.2.254/32 is directly connected, GigabitEthernet0/0
+     192.168.3.0/24 is variably subnetted, 2 subnets, 2 masks
+C       192.168.3.0/24 is directly connected, GigabitEthernet0/1
+L       192.168.3.2/32 is directly connected, GigabitEthernet0/1
+
+RTB#
+RTB#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+RTB#
