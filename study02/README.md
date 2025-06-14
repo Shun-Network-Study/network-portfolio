@@ -688,7 +688,6 @@ RTB(config-router)#
 
 ```
 03:32:03: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.3.1 on GigabitEthernet0/1 from LOADING to FULL, Loading Done
-
 ```
 - OSPFで隣接ルータ（RTA）とのネイバー関係が確立されたログを確認
 
