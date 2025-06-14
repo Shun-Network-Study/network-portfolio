@@ -1,1 +1,48 @@
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname SWB
+SWB(config)#enable password Cisco
+SWB(config)#end
+SWB#
+%SYS-5-CONFIG_I: Configured from console by console
+SWB#show run
+Building configuration...
 
+Current configuration : 1101 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SWB
+!
+enable password Cisco
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+!
+SWB#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SWB#
+SWB#
