@@ -23,17 +23,17 @@
   - 黒本（2周）  
   - Ping-t（1600問）
   - コマンド問題（300問）
-- **実機学習**: Cisco Packet Tracer / Cisco Modeling Labs
+- **Cisco実機シミュレーター**: Cisco Packet Tracer / Cisco Modeling Labs
 
 ## ハンズオン実践記録
 「ネットワーク構築マラソン」（株式会社CAIRN 運営）
-- [第1回：Cisco機器の基本設定【実機検証】](/study01/README.md)
-- [第2回：ルーティングの設定【実機検証】](/study02/README.md)
-- 第3回：アクセスリスト(ACL)の設定【実機検証】
-- 第4回①：NATの設定(基本)【実機検証】
-- 第4回②：NATの設定(応用)【実機検証】
-- 第5回：DHCPの設定【実機検証】
-- 第6回：VLANの設定(基本)【実機検証】
+- [第1回：Cisco機器の基本設定](/study01/README.md)
+- [第2回：ルーティングの設定](/study02/README.md)
+- 第3回：アクセスリスト(ACL)の設定
+- 第4回①：NATの設定(基本)
+- 第4回②：NATの設定(応用)
+- 第5回：DHCPの設定
+- 第6回：VLANの設定(基本)
 
 ※クリックすると閲覧できます。
 
