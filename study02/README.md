@@ -23,9 +23,6 @@
 ### ルータ（RTA）の設定
 [全ての設定ファイルを見る](/study02/configs/router-config-RTA.txt)
 
-↑スタティックルートのコンフィグ追加
-↑OSPFのコンフィグ追加
-
 **ホスト名の設定**
 ```
 Router>en
@@ -190,9 +187,6 @@ RTA#
 
 ### ルータ（RTB）の設定
 [全ての設定ファイルを見る](/study02/configs/router-config-RTB.txt)
-
-↑スタティックルートのコンフィグ追加
-↑OSPFのコンフィグ追加
 
 **ホスト名の設定**
 ```
