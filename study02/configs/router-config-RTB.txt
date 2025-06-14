@@ -173,12 +173,7 @@ RTB(config-router)#network 192.168.3.2 0.0.0.0 area 0
 RTB(config-router)#
 03:32:03: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.3.1 on GigabitEthernet0/1 from LOADING to FULL, Loading Done
 
-RTB(config-router)#
-```
-
-```
-03:32:03: %OSPF-5-ADJCHG: Process 1, Nbr 192.168.3.1 on GigabitEthernet0/1 from LOADING to FULL, Loading Done
-
+RTB(config-router)#end
 RTB#show ip route
 Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
        D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area
