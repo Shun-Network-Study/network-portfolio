@@ -425,9 +425,9 @@ Building configuration...
 RTA#
 ```
 
-### 検証PCの設定
-- 検証PCにIPアドレスを割り当てる
-![検証PCにIPアドレスを割り当てる](/study01/images/課題1_1.png)
+### 検証用PCの設定
+- 検証用PCにIPアドレスを割り当てる
+![検証用PCにIPアドレスを割り当てる](/study01/images/課題1_1.png)
 
 - IPアドレスの確認
 ![IPアドレスの確認](/study01/images/課題1_2.png)
