@@ -22,8 +22,6 @@
 ### ルータ（RTA）の設定
 [全ての設定ファイルを見る](/study03/configs/router-config-RTA.txt)
 
-↑拡張ACLのコンフィグ追加
-
 **ホスト名の設定**
 ```
 Router>en
