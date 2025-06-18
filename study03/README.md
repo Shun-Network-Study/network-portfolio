@@ -751,7 +751,7 @@ RTA#
 ![PC AからRTB(192.168.3.2)へTelnet接続2](/study03/images/課題3_11.png)
 
 - 【「無効なホスト」等のメッセージが表示され、接続できなければ意図した制御ができています。】と課題には記載されているが、Telnet接続が成功し、VTYパスワード「Password:Cisco」を入力してログインし、enableパスワード「Password:Cisco」を入力して特権モードへ移行できたため、Telnet接続が制御されなかったことを確認
-- 【PC AからRTB (192.168.3.2)へTelnet接続】と課題には記載されているが、IPアドレス: 192.168.3.2は、RTBのGigabitEthernet 0/1であり、拡張ACLの2行目のpermit ip any anyに該当するため、Telnet接続が制御されなかったと考えられる
+- 【PC AからRTB (192.168.3.2)へTelnet接続】と課題には記載されているが、IPアドレス192.168.3.2は、RTBのGigabitEthernet 0/1であり、拡張ACLの2行目のpermit ip any anyに該当するため、Telnet接続が制御されなかったと考えられる
 - 拡張ACLの1行目に設定した、宛先IPアドレスのRTB GigabitEthernet 0/0(192.168.2.254)の場合、Telnet接続が制御されていると推測
 
 ### PC AからRTB GigabitEthernet0/0(192.168.2.254)へTelnet接続
@@ -765,7 +765,7 @@ User Access Verification
 Password:
 ```
 - 上記Telnetでのログイン成功画面が表示されず、キーを押しても何も反応しなかったので、Telnet接続が制御されていることを確認
-- 拡張ACLにより、異なるネットワークのRTB  GigabitEthernet 0/0(192.168.2.254)へのTelnet接続が制御されることを確認
+- 拡張ACLにより、異なるネットワークのRTB GigabitEthernet 0/0(192.168.2.254)へのTelnet接続が制御されることを確認
 - ACLを適用しているインターフェースを通過しない場合、通信は許可される
 
 ### 学習成果・気付き
@@ -778,7 +778,7 @@ Password:
 - 拡張ACLで主に使用するプロトコルは、ip、icmp、tcp、udp
 - tcpやudpの場合は、ポート番号を指定する
 - ACLは作成した順に、シーケンス番号が付与される
-- インターフェースへ適用する際は、inかoutか、を指定する
+- インターフェースへ適用する際は、inかoutかを指定する
 - ACLの最後には暗黙のdenyが存在するため、許可したい通信は明示的にpermitで指定する必要がある
 - ACL番号の範囲
 - 標準ACL: 1-99、1300-1999
