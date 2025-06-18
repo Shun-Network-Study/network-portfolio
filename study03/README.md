@@ -754,7 +754,7 @@ RTA#
 - 【PC AからRTB (192.168.3.2)へTelnet接続】と課題には記載されているが、IPアドレス192.168.3.2は、RTBのGigabitEthernet 0/1であり、拡張ACLの2行目のpermit ip any anyに該当するため、Telnet接続が制御されなかったと考えられる
 - 拡張ACLの1行目に設定した、宛先IPアドレスのRTB GigabitEthernet 0/0(192.168.2.254)の場合、Telnet接続が制御されていると推測
 
-### PC AからRTB GigabitEthernet0/0(192.168.2.254)へTelnet接続
+### PC AからRTB GigabitEthernet 0/0(192.168.2.254)へTelnet接続
 ![PC AからRTB(192.168.2.254)へTelnet接続1](/study03/images/課題3_12.png)
 ![PC AからRTB(192.168.2.254)へTelnet接続2](/study03/images/課題3_13.png)
 
