@@ -792,7 +792,7 @@ Password:
 **設定コマンドの学び**
 - Ctrl+Shift+6 が反応しない場合、Ctrl+C → コマンド表示を中断
 - #show access-lists → ACL設定内容の確認
-- #show ip interface[インターフェース名] → 設定したACLの番号と適用方向を確認する
+- #show ip interface [インターフェース名] → 設定したACLの番号と適用方向を確認する
 
 **所感**
 - 標準ACLでは送信元IPアドレスのみでの制御となるため、制御範囲が限定的であると感じた
