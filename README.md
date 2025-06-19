@@ -30,7 +30,7 @@
 - [第1回：Cisco機器の基本設定](/study01/README.md)
 - [第2回：ルーティングの設定](/study02/README.md)
 - [第3回：アクセスリスト(ACL)の設定](/study03/README.md)
-- 第4回①：NATの設定(基本)
+- [第4回①：NATの設定(基本)](/study04/README.md)
 - 第4回②：NATの設定(応用)
 - 第5回：DHCPの設定
 - 第6回：VLANの設定(基本)
