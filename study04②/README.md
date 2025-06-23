@@ -658,6 +658,10 @@ GWRT#
 - インターフェースのIPアドレスやリンクアップ状態を確認し、C（直接接続）がPPPoEで払い出しているグローバルIPアドレスであること、インターフェースがdialer1であることを確認
 
 ### Proxyサーバ・WEBサーバ・DNSサーバの設定
+
+### Proxyサーバの設定
+[Proxyサーバの全ての設定ファイルを見る](/study04②/configs/server-config-Proxy_Server.txt)
+
 #### Proxyサーバ・WEBサーバ・DNSサーバにIPアドレス・デフォルトゲートウェイを設定する
 - Proxyサーバ → IPアドレス: 192.168.10.1　サブネットマスク: 255.255.255.0
 - Proxyサーバのデフォルトゲートウェイ（GWRT E0/0） → IPアドレス: 192.168.10.254　サブネットマスク: 255.255.255.0
@@ -684,6 +688,10 @@ default via 192.168.10.254 dev eth0
 192.168.10.0/24 dev eth0 scope link  src 192.168.10.1 
 Proxy_Server:~$ 
 ```
+
+### WEBサーバの設定
+[WEBサーバの全ての設定ファイルを見る](/study04②/configs/server-config-Web_Server.txt)
+
 - WEBサーバ → IPアドレス: 8.8.7.7　サブネットマスク: 255.255.255.0
 - WEBサーバのデフォルトゲートウェイ（GAIBURT E0/0） → IPアドレス: 8.8.7.254　サブネットマスク: 255.255.255.0
 ```
@@ -709,6 +717,10 @@ default via 8.8.7.254 dev eth0
 8.8.7.0/24 dev eth0 scope link  src 8.8.7.7 
 Web_Server:~$ 
 ```
+
+### DNSサーバの設定
+[DNSサーバの全ての設定ファイルを見る](/study04②/configs/server-config-Dns_Server.txt)
+
 - DNSサーバ → IPアドレス: 8.8.8.8　サブネットマスク: 255.255.255.0
 - DNSサーバのデフォルトゲートウェイ（GAIBURT E0/2） → IPアドレス: 8.8.8.254　サブネットマスク: 255.255.255.0
 ```
