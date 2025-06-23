@@ -19,7 +19,7 @@
 - 第6回：VLANの設定(基本)
 
 ## 検証環境
-- Cisco Packet Tracer
+- Cisco Packet Tracer / Cisco Modeling Labs
 
 ## 保有資格
 - CCNA（Cisco Certified Network Associate） 【2025年5月8日 取得】
