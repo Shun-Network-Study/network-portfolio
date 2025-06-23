@@ -1,0 +1,555 @@
+inserthostname-here>en
+inserthostname-here#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+inserthostname-here(config)#hostname GWRT
+GWRT(config)#enable password Cisco
+ WARNING: Configured enable password CLI with weak encryption type 0 will be deprecated in future. Hence please migrate to enable secret CLI which accomplishes same functionality as enable password CLI and which also supports strong irreversible encryption type 9
+GWRT(config)#
+*Jun 22 08:14:08.633: %AAAA-4-CLI_DEPRECATED: WARNING: Configured enable password CLI with weak encryption type 0 will be deprecated in future. Hence please migrate to enable secret CLI which accomplishes same functionality as enable password CLI and which also supports strong irreversible encryption type 9
+GWRT(config)#line vty 0 4
+GWRT(config-line)# password Cisco
+GWRT(config-line)# login
+GWRT(config-line)#exit
+GWRT(config)#interface E0/0
+GWRT(config-if)#ip address 192.168.10.254 255.255.255.0
+GWRT(config-if)# no shutdown
+GWRT(config-if)#
+*Jun 22 08:15:51.807: %LINK-5-UPDOWN: Interface Ethernet0/0, changed state to up
+*Jun 22 08:15:52.807: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+GWRT(config-if)#exit
+GWRT(config)#interface dialer 1 
+GWRT(config-if)#ip address negotiated 
+GWRT(config-if)# ip mtu 1454
+GWRT(config-if)# encapsulation ppp
+GWRT(config-if)# dialer pool 1
+GWRT(config-if)# ppp authentication chap callin
+GWRT(config-if)# ppp chap hostname test1@example.com
+GWRT(config-if)# ppp chap password Cisco1
+GWRT(config-if)# dialer-group 1
+GWRT(config-if)# ip access-group EX in
+GWRT(config-if)# ip inspect CBAC out
+                      ^
+% Invalid input detected at '^' marker.
+
+GWRT(config-if)# ip inspect CBAC out
+                      ^
+% Invalid input detected at '^' marker.
+
+GWRT(config-if)#ip inspect          
+                     ^
+% Invalid input detected at '^' marker.
+
+GWRT(config-if)#ip ins?   
+% Unrecognized command
+GWRT(config-if)#ip in?
+information-reply  
+
+GWRT(config-if)#ip inspe
+GWRT(config-if)#ip inspect ?
+% Unrecognized command
+GWRT(config-if)#ip inspect 
+GWRT#
+*Jun 22 08:18:16.519: %SYS-5-CONFIG_I: Configured from console by console
+GWRT#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+GWRT(config)#ip inspect name CBAC icmp
+                 ^
+% Invalid input detected at '^' marker.
+
+GWRT(config)#ip ins                   
+GWRT(config)#ip ins?
+% Unrecognized command
+GWRT(config)#ip inspect na            
+GWRT(config)#ip inspect name ?
+% Unrecognized command
+GWRT(config)#ip inspect name 
+                 ^
+% Invalid input detected at '^' marker.
+
+GWRT(config)#interface dialer 1
+GWRT(config-if)#no ip access-group EX in
+GWRT(config-if)#exit
+GWRT(config)#end
+GWRT#show 
+*Jun 22 08:24:29.276: %SYS-5-CONFIG_I: Configured from console by console
+GWRT#show run
+Building configuration...
+
+Current configuration : 1124 bytes
+!
+! Last configuration change at 08:24:29 UTC Sun Jun 22 2025
+!
+version 17.15
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname GWRT
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!         
+!         
+!         
+!         
+!         
+!         
+ip cef    
+login on-success log
+no ipv6 cef
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+memory free low-watermark processor 80093
+!         
+!         
+spanning-tree mode rapid-pvst
+!         
+enable password Cisco
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+interface Ethernet0/0
+ ip address 192.168.10.254 255.255.255.0
+!         
+interface Ethernet0/1
+ no ip address
+ shutdown 
+!         
+interface Ethernet0/2
+ no ip address
+ shutdown 
+!         
+interface Ethernet0/3
+ no ip address
+ shutdown 
+!         
+interface Dialer1
+ ip address negotiated
+ ip mtu 1454
+ encapsulation ppp
+ dialer pool 1
+ dialer-group 1
+ ppp authentication chap callin
+ ppp chap hostname test1@example.com
+ ppp chap password 0 Cisco1
+!         
+ip forward-protocol nd
+          
+GWRT#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+GWRT(config)#dialer-list 1 protocol ip permit
+GWRT(config)#interface E0/1
+GWRT(config-if)#pppoe enable
+GWRT(config-if)# pppoe-client dial-pool-number 1
+GWRT(config-if)# no shutdown enabling sss event trace
+
+GWRT(config-if)# no shutdown 
+GWRT(config-if)#
+*Jun 22 08:28:12.636: %LINEPROTO-5-UPDOWN: Line protocol on Interface Virtual-Access1, changed state to up
+*Jun 22 08:28:12.637: %LINK-5-UPDOWN: Interface Virtual-Access1, changed state to up
+GWRT(config-if)#
+*Jun 22 08:28:15.862: %LINK-5-UPDOWN: Interface Ethernet0/1, changed state to up
+*Jun 22 08:28:16.863: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
+GWRT(config-if)#exit
+GWRT(config)#ip route 0.0.0.0 0.0.0.0 dialer1
+GWRT(config)#end
+GWRT#show
+*Jun 22 08:34:05.605: %SYS-5-CONFIG_I: Configured from console by console
+GWRT#show run
+Building configuration...
+
+Current configuration : 1240 bytes
+!
+! Last configuration change at 08:34:05 UTC Sun Jun 22 2025
+!
+version 17.15
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname GWRT
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!         
+!         
+!         
+!         
+!         
+!         
+ip cef    
+login on-success log
+no ipv6 cef
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+memory free low-watermark processor 80093
+!         
+!         
+spanning-tree mode rapid-pvst
+!         
+enable password Cisco
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+interface Ethernet0/0
+ ip address 192.168.10.254 255.255.255.0
+!         
+interface Ethernet0/1
+ no ip address
+ pppoe enable group global
+ pppoe-client dial-pool-number 1
+!         
+interface Ethernet0/2
+ no ip address
+ shutdown 
+!         
+interface Ethernet0/3
+ no ip address
+ shutdown 
+!         
+interface Dialer1
+ ip address negotiated
+ ip mtu 1454
+ encapsulation ppp
+ dialer pool 1
+ dialer-group 1
+ ppp authentication chap callin
+ ppp chap hostname test1@example.com
+ ppp chap password 0 Cisco1
+!         
+ip forward-protocol nd
+!         
+!         
+ip http server
+ip http secure-server
+ip route 0.0.0.0 0.0.0.0 Dialer1
+ip ssh bulk-mode 131072
+no logging btrace
+dialer-list 1 protocol ip permit
+!         
+!         
+!         
+control-plane
+!         
+!         
+!         
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ password Cisco
+ login    
+ transport input ssh
+!         
+!         
+!         
+!         
+end       
+          
+GWRT#
+GWRT#
+GWRT#
+GWRT#
+GWRT#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+GWRT#
+GWRT#
+
+GWRT>en
+Password: 
+GWRT#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+GWRT(config)#exit
+GWRT#
+*Jun 22 09:12:52.857: %SYS-5-CONFIG_I: Configured from console by console
+GWRT#show ip int brief
+Interface              IP-Address      OK? Method Status                Protocol
+Ethernet0/0            192.168.10.254  YES manual up                    up      
+Ethernet0/1            unassigned      YES TFTP   up                    up      
+Ethernet0/2            unassigned      YES TFTP   administratively down down    
+Ethernet0/3            unassigned      YES TFTP   administratively down down    
+Dialer1                200.1.1.1       YES IPCP   up                    up      
+Virtual-Access1        unassigned      YES unset  up                    up      
+Virtual-Access2        unassigned      YES manual up                    up      
+GWRT#
+GWRT#show ip route
+Codes: L - local, C - connected, S - static, R - RIP, M - mobile, B - BGP
+       D - EIGRP, EX - EIGRP external, O - OSPF, IA - OSPF inter area 
+       N1 - OSPF NSSA external type 1, N2 - OSPF NSSA external type 2
+       E1 - OSPF external type 1, E2 - OSPF external type 2, m - OMP
+       n - NAT, Ni - NAT inside, No - NAT outside, Nd - NAT DIA
+       i - IS-IS, su - IS-IS summary, L1 - IS-IS level-1, L2 - IS-IS level-2
+       ia - IS-IS inter area, * - candidate default, U - per-user static route
+       H - NHRP, G - NHRP registered, g - NHRP registration summary
+       o - ODR, P - periodic downloaded static route, l - LISP
+       a - application route
+       + - replicated route, % - next hop override, p - overrides from PfR
+       & - replicated local route overrides by connected
+
+Gateway of last resort is 0.0.0.0 to network 0.0.0.0
+
+S*    0.0.0.0/0 is directly connected, Dialer1
+      20.0.0.0/32 is subnetted, 1 subnets
+C        20.1.1.1 is directly connected, Dialer1
+      192.168.10.0/24 is variably subnetted, 2 subnets, 2 masks
+C        192.168.10.0/24 is directly connected, Ethernet0/0
+L        192.168.10.254/32 is directly connected, Ethernet0/0
+      200.1.1.0/32 is subnetted, 1 subnets
+C        200.1.1.1 is directly connected, Dialer1
+GWRT#
+GWRT#
+
+GWRT>en
+Password: 
+GWRT#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+GWRT(config)#interface Dialer1
+GWRT(config-if)#ip nat outside
+GWRT(config-if)#exit
+GWRT(config)#interface E0/0
+GWRT(config-if)#ip nat inside
+GWRT(config-if)#exit                                       
+GWRT(config)#access-list 1 permit 192.168.10.0 0.0.0.255
+GWRT(config)#ip nat inside source list 1 interface Dialer1 overload
+GWRT(config)#end
+GWRT#
+*Jun 22 10:18:29.020: %SYS-5-CONFIG_I: Configured from console by console
+GWRT#show ip nat translations
+GWRT#
+GWRT#show ip nat translations
+GWRT#show ip nat tra
+GWRT#show ip nat translations 
+GWRT#
+GWRT#show ip nat translations 
+Pro Inside global      Inside local       Outside local      Outside global
+icmp 200.1.1.1:1024    192.168.10.1:2     8.8.7.7:2          8.8.7.7:1024
+GWRT#
+
+GWRT>en
+Password: 
+GWRT#debug ip nat
+IP NAT debugging is on
+GWRT#
+*Jun 22 10:35:09.217: NAT: Entry assigned id 2
+*Jun 22 10:35:09.217: NAT*: ICMP id=3->1024
+*Jun 22 10:35:09.218: NAT*: s=192.168.10.1->200.1.1.1, d=8.8.7.7 [36045]
+*Jun 22 10:35:09.219: NAT*: ICMP id=1024->3
+*Jun 22 10:35:09.219: NAT*: s=8.8.7.7, d=200.1.1.1->192.168.10.1 [54515]
+GWRT#
+*Jun 22 10:35:10.218: NAT*: ICMP id=3->1024
+*Jun 22 10:35:10.218: NAT*: s=192.168.10.1->200.1.1.1, d=8.8.7.7 [36065]
+*Jun 22 10:35:10.218: NAT*: ICMP id=1024->3
+*Jun 22 10:35:10.218: NAT*: s=8.8.7.7, d=200.1.1.1->192.168.10.1 [54553]
+GWRT#
+*Jun 22 10:35:11.218: NAT*: ICMP id=3->1024
+*Jun 22 10:35:11.218: NAT*: s=192.168.10.1->200.1.1.1, d=8.8.7.7 [36124]
+*Jun 22 10:35:11.219: NAT*: ICMP id=1024->3
+*Jun 22 10:35:11.219: NAT*: s=8.8.7.7, d=200.1.1.1->192.168.10.1 [54560]
+GWRT#
+*Jun 22 10:35:12.218: NAT*: ICMP id=3->1024
+*Jun 22 10:35:12.218: NAT*: s=192.168.10.1->200.1.1.1, d=8.8.7.7 [36164]
+*Jun 22 10:35:12.220: NAT*: ICMP id=1024->3
+*Jun 22 10:35:12.220: NAT*: s=8.8.7.7, d=200.1.1.1->192.168.10.1 [54642]
+GWRT#
+*Jun 22 10:35:13.219: NAT*: ICMP id=3->1024
+*Jun 22 10:35:13.219: NAT*: s=192.168.10.1->200.1.1.1, d=8.8.7.7 [36180]
+*Jun 22 10:35:13.220: NAT*: ICMP id=1024->3
+*Jun 22 10:35:13.220: NAT*: s=8.8.7.7, d=200.1.1.1->192.168.10.1 [54741]
+GWRT#
+*Jun 22 10:35:14.219: NAT*: ICMP id=3->1024
+*Jun 22 10:35:14.219: NAT*: s=192.168.10.1->200.1.1.1, d=8.8.7.7 [36232]
+*Jun 22 10:35:14.221: NAT*: ICMP id=1024->3
+*Jun 22 10:35:14.221: NAT*: s=8.8.7.7, d=200.1.1.1->192.168.10.1 [54760]
+GWRT#
+*Jun 22 10:36:14.477: NAT: expiring 200.1.1.1 (192.168.10.1) icmp 1024 (3)
+*Jun 22 10:36:14.477: NAT: Freeing nat entry, id 2
+GWRT#no debug ip nat
+IP NAT debugging is off
+GWRT#
+GWRT#
+GWRT#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+GWRT(config)#ip nat outside source static 8.8.8.8 128.27.30.5
+GWRT(config)#show ip nat translations
+               ^
+% Invalid input detected at '^' marker.
+
+GWRT(config)#end
+GWRT#
+*Jun 22 10:47:22.661: %SYS-5-CONFIG_I: Configured from console by console
+GWRT#show ip nat translations
+Pro Inside global      Inside local       Outside local      Outside global
+--- ---                ---                128.27.30.5        8.8.8.8
+GWRT#debug ip nat
+IP NAT debugging is on
+GWRT#
+GWRT#
+*Jun 22 10:50:45.793: NAT: Entry assigned id 4
+*Jun 22 10:50:45.793: NAT*: ICMP id=4->1024
+*Jun 22 10:50:45.793: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8101]
+*Jun 22 10:50:45.793: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8101]
+*Jun 22 10:50:45.795: NAT*: ICMP id=1024->4
+*Jun 22 10:50:45.795: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [35940]
+*Jun 22 10:50:45.795: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [35940]
+GWRT#
+*Jun 22 10:50:46.793: NAT*: ICMP id=4->1024
+*Jun 22 10:50:46.793: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8123]
+*Jun 22 10:50:46.793: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8123]
+*Jun 22 10:50:46.795: NAT*: ICMP id=1024->4
+*Jun 22 10:50:46.795: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36009]
+*Jun 22 10:50:46.795: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36009]
+GWRT#
+*Jun 22 10:50:47.794: NAT*: ICMP id=4->1024
+*Jun 22 10:50:47.794: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8147]
+*Jun 22 10:50:47.794: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8147]
+*Jun 22 10:50:47.795: NAT*: ICMP id=1024->4
+*Jun 22 10:50:47.795: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36051]
+*Jun 22 10:50:47.795: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36051]
+GWRT#
+*Jun 22 10:50:48.794: NAT*: ICMP id=4->1024
+*Jun 22 10:50:48.794: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8190]
+*Jun 22 10:50:48.794: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8190]
+*Jun 22 10:50:48.795: NAT*: ICMP id=1024->4
+*Jun 22 10:50:48.795: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36082]
+*Jun 22 10:50:48.795: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36082]
+GWRT#
+*Jun 22 10:50:49.795: NAT*: ICMP id=4->1024
+*Jun 22 10:50:49.795: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8267]
+*Jun 22 10:50:49.795: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8267]
+*Jun 22 10:50:49.796: NAT*: ICMP id=1024->4
+*Jun 22 10:50:49.796: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36110]
+*Jun 22 10:50:49.796: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36110]
+*Jun 22 10:50:50.795: NAT*: ICMP id=4->1024
+*Jun 22 10:50:50.795: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8360]
+*Jun 22 10:50:50.795: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8360]
+GWRT#
+*Jun 22 10:50:50.796: NAT*: ICMP id=1024->4
+*Jun 22 10:50:50.796: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36129]
+*Jun 22 10:50:50.796: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36129]
+*Jun 22 10:50:51.795: NAT*: ICMP id=4->1024
+*Jun 22 10:50:51.795: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8421]
+*Jun 22 10:50:51.795: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8421]
+GWRT#
+*Jun 22 10:50:51.797: NAT*: ICMP id=1024->4
+*Jun 22 10:50:51.797: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36212]
+*Jun 22 10:50:51.797: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36212]
+*Jun 22 10:50:52.796: NAT*: ICMP id=4->1024
+*Jun 22 10:50:52.796: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8517]
+*Jun 22 10:50:52.796: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8517]
+*Jun 22 10:50:52.797: NAT*: ICMP id=1024->4
+*Jun 22 10:50:52.797: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36291]
+*Jun 22 10:50:52.797: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36291]
+GWRT#
+*Jun 22 10:50:53.796: NAT*: ICMP id=4->1024
+*Jun 22 10:50:53.796: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8529]
+*Jun 22 10:50:53.796: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8529]
+*Jun 22 10:50:53.797: NAT*: ICMP id=1024->4
+*Jun 22 10:50:53.797: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36331]
+*Jun 22 10:50:53.797: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36331]
+GWRT#
+*Jun 22 10:50:54.797: NAT*: ICMP id=4->1024
+*Jun 22 10:50:54.797: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8621]
+*Jun 22 10:50:54.797: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8621]
+*Jun 22 10:50:54.798: NAT*: ICMP id=1024->4
+*Jun 22 10:50:54.798: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36412]
+*Jun 22 10:50:54.798: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36412]
+GWRT#
+*Jun 22 10:50:55.797: NAT*: ICMP id=4->1024
+*Jun 22 10:50:55.797: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8646]
+*Jun 22 10:50:55.797: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8646]
+*Jun 22 10:50:55.798: NAT*: ICMP id=1024->4
+*Jun 22 10:50:55.798: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36440]
+*Jun 22 10:50:55.798: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36440]
+*Jun 22 10:50:56.797: NAT*: ICMP id=4->1024
+*Jun 22 10:50:56.797: NAT*: s=192.168.10.1->200.1.1.1, d=128.27.30.5 [8739]
+*Jun 22 10:50:56.797: NAT*: s=200.1.1.1, d=128.27.30.5->8.8.8.8 [8739]
+GWRT#
+*Jun 22 10:50:56.798: NAT*: ICMP id=1024->4
+*Jun 22 10:50:56.798: NAT*: s=8.8.8.8->128.27.30.5, d=200.1.1.1 [36468]
+*Jun 22 10:50:56.798: NAT*: s=128.27.30.5, d=200.1.1.1->192.168.10.1 [36468]
+GWRT#
+*Jun 22 10:51:57.298: NAT: expiring 200.1.1.1 (192.168.10.1) icmp 1024 (4)
+*Jun 22 10:51:57.298: NAT: Freeing nat entry, id 4
+GWRT#no debug ip nat
+IP NAT debugging is off
+GWRT#
