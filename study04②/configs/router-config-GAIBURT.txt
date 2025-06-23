@@ -1,0 +1,216 @@
+inserthostname-here>en
+inserthostname-here#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+inserthostname-here(config)#hostname GAIBURT
+GAIBURT(config)#enable password Cisco
+ WARNING: Configured enable password CLI with weak encryption type 0 will be deprecated in future. Hence please migrate to enable secret CLI which accomplishes same functionality as enable password CLI and which also supports strong irreversible encryption type 9
+GAIBURT(config)#
+*Jun 22 08:48:18.265: %AAAA-4-CLI_DEPRECATED: WARNING: Configured enable password CLI with weak encryption type 0 will be deprecated in future. Hence please migrate to enable secret CLI which accomplishes same functionality as enable password CLI and which also supports strong irreversible encryption type 9
+GAIBURT(config)#line vty 0 4
+GAIBURT(config-line)# password Cisco
+GAIBURT(config-line)# login
+GAIBURT(config-line)#exit
+GAIBURT(config)#username test1@example.com password Cisco1
+ WARNING: Command has been added to the configuration using a type 0 password. However, recommended to migrate to strong type-6 encryption
+GAIBURT(config)#
+*Jun 22 08:49:07.437: %AAA-6-USERNAME_CONFIGURATION: user with username: test1@example.com configured
+GAIBURT(config)#
+*Jun 22 08:49:07.437: %AAAA-4-CLI_DEPRECATED: WARNING: Command has been added to the configuration using a type 0 password. However, recommended to migrate to strong type-6 encryption
+GAIBURT(config)#interface loopback 1
+GAIBURT(config-if)#
+*Jun 22 08:49:50.567: %LINEPROTO-5-UPDOWN: Line protocol on Interface Loopback1, changed state to up
+GAIBURT(config-if)#ip address 20.1.1.1 255.255.255.255
+GAIBURT(config-if)#exit
+GAIBURT(config)#ip local pool POOL1 200.1.1.1
+GAIBURT(config)#interface Virtual-Template 1
+GAIBURT(config-if)#
+*Jun 22 08:50:52.776: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as vty0
+GAIBURT(config-if)#mtu 1454
+GAIBURT(config-if)# ip unnumbered loopback 1
+GAIBURT(config-if)# peer default ip address pool POOL1
+GAIBURT(config-if)# ppp authentication chap
+GAIBURT(config-if)#
+*Jun 22 08:51:12.594: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as vty0
+*Jun 22 08:51:12.595: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as vty0
+*Jun 22 08:51:12.595: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as console
+*Jun 22 08:51:13.401: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as console
+*Jun 22 08:51:13.402: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as console
+GAIBURT(config-if)#
+*Jun 22 08:51:13.402: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as console
+*Jun 22 08:51:13.402: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as console
+GAIBURT(config-if)#exit
+GAIBURT(config)#bba-group pppoe PPPOE-GROUP1
+GAIBURT(config-bba-group)#
+*Jun 22 08:51:46.685: %LINEPROTO-5-UPDOWN: Line protocol on Interface Virtual-Access2, changed state to up
+*Jun 22 08:51:46.685: %LINK-5-UPDOWN: Interface Virtual-Access2, changed state to up
+GAIBURT(config-bba-group)#virtual-template 1
+GAIBURT(config-bba-group)#exit
+GAIBURT(config)#interface E0/1
+GAIBURT(config-if)#pppoe enable group PPPOE-GROUP1
+GAIBURT(config-if)# no shutdown
+GAIBURT(config-if)#enabling sss event trace
+
+GAIBURT(config-if)#
+*Jun 22 08:52:54.658: %LINK-5-UPDOWN: Interface Ethernet0/1, changed state to up
+*Jun 22 08:52:55.658: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
+GAIBURT(config-if)#
+*Jun 22 08:52:57.088: %SYS-5-CONFIG_P: Configured programmatically by process VTEMPLATE Background Mgr from console as console
+GAIBURT(config-if)#exit
+GAIBURT(config)#interface E0/2
+GAIBURT(config-if)#ip address 8.8.8.254 255.255.255.0
+GAIBURT(config-if)# no shutdown
+GAIBURT(config-if)#
+*Jun 22 08:58:59.952: %LINK-5-UPDOWN: Interface Ethernet0/2, changed state to up
+*Jun 22 08:59:00.952: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/2, changed state to up
+GAIBURT(config-if)#exit
+GAIBURT(config)#ip route 0.0.0.0 0.0.0.0 200.1.1.1
+GAIBURT(config)#interface E0/0
+GAIBURT(config-if)#ip address 8.8.7.254 255.255.255.0
+GAIBURT(config-if)#no shutdown
+GAIBURT(config-if)#
+*Jun 22 09:00:39.931: %LINK-5-UPDOWN: Interface Ethernet0/0, changed state to up
+GAIBURT(config-if)#
+*Jun 22 09:00:40.931: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/0, changed state to up
+GAIBURT(config-if)#end
+GAIBURT#
+*Jun 22 09:01:26.612: %SYS-5-CONFIG_I: Configured from console by console
+GAIBURT#show run
+Building configuration...
+
+Current configuration : 1299 bytes
+!
+! Last configuration change at 09:01:26 UTC Sun Jun 22 2025
+!
+version 17.15
+service timestamps debug datetime msec
+service timestamps log datetime msec
+!
+hostname GAIBURT
+!
+boot-start-marker
+boot-end-marker
+!
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+!         
+!         
+!         
+!         
+!         
+!         
+ip cef    
+login on-success log
+no ipv6 cef
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+memory free low-watermark processor 80093
+!         
+!         
+spanning-tree mode rapid-pvst
+!         
+enable password Cisco
+!         
+username test1@example.com password 0 Cisco1
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+!         
+bba-group pppoe PPPOE-GROUP1
+ virtual-template 1
+!         
+!         
+!         
+interface Loopback1
+ ip address 20.1.1.1 255.255.255.255
+!         
+interface Ethernet0/0
+ ip address 8.8.7.254 255.255.255.0
+!         
+interface Ethernet0/1
+ no ip address
+ pppoe enable group PPPOE-GROUP1
+!         
+interface Ethernet0/2
+ ip address 8.8.8.254 255.255.255.0
+!         
+interface Ethernet0/3
+ no ip address
+ shutdown 
+!         
+interface Virtual-Template1
+ mtu 1454 
+ ip unnumbered Loopback1
+ peer default ip address pool POOL1
+ ppp authentication chap
+!         
+ip local pool POOL1 200.1.1.1
+ip forward-protocol nd
+!         
+!         
+ip http server
+ip http secure-server
+ip route 0.0.0.0 0.0.0.0 200.1.1.1
+ip ssh bulk-mode 131072
+no logging btrace
+!         
+!         
+!         
+control-plane
+!         
+!         
+!         
+line con 0
+ logging synchronous
+line aux 0
+line vty 0 4
+ password Cisco
+ login    
+ transport input ssh
+!         
+!         
+!         
+!         
+end       
+          
+GAIBURT#
+GAIBURT#
+GAIBURT#
+GAIBURT#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+GAIBURT#
+GAIBURT#
