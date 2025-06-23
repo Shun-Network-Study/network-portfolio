@@ -48,8 +48,8 @@ GAIBURT(config-bba-group)#exit
 GAIBURT(config)#interface E0/1
 GAIBURT(config-if)#pppoe enable group PPPOE-GROUP1
 GAIBURT(config-if)# no shutdown
-GAIBURT(config-if)#enabling sss event trace
-
+GAIBURT(config-if)#
+enabling sss event trace
 GAIBURT(config-if)#
 *Jun 22 08:52:54.658: %LINK-5-UPDOWN: Interface Ethernet0/1, changed state to up
 *Jun 22 08:52:55.658: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
