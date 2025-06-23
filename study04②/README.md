@@ -6,17 +6,17 @@
 - NAPTの設定
 - 宛先NATの設定
 - PPPoEサーバ・クライアントの設定
-- 内部から外部への通信時に、IPアドレスがNAPT変換されていることを確認
-- 内部に存在していないIPアドレスへの通信時に、宛先NAT変換され、疎通可能なことを確認
-- Linuxの基本的なネットワーク設定コマンドの理解
+- 内部から外部への通信時に、IPアドレスがNAPTによって変換されていることを確認
+- 内部に存在していないIPアドレスへの通信時に、宛先NAT変換によって疎通が可能であることを確認
+- Linuxの基本的なネットワーク設定コマンドの習得
 
 ```
 (config)#dialer-list [番号] protocol ip permit………対象となるのはIPパケットと指定
 (config-if)#dialer-group [番号]…………………………………dialer-listを番号でインターフェースに紐づける
 ```
-- Cisco Packet Tracerで、上記Dialerインターフェースの設定を行ったのですが、コマンド制限があり設定を適用できませんでした
-- 高度なネットワーク設定のため「Cisco Modeling Labs」で検証を開始
-- 無料版が5ノードに制限されていたため、L2スイッチを省いた構成に変更して検証を行いました
+- Cisco Packet Tracerで、Dialerインターフェースの設定を試行したが、コマンド制限により適用できませんでした
+- 高度なネットワーク設定を行うため「Cisco Modeling Labs」で検証を開始しました
+- 無料版は5ノードに制限されていたため、L2スイッチを省いた構成で検証を実施しました
 
 ## 使用機器
 - **ルータ**: Cisco IOL(IOS on Linux) ×2台
@@ -31,8 +31,8 @@
 ### ルータ（GWRT）の設定
 [ルータ（GWRT）の全ての設定ファイルを見る](/study04②/configs/router-config-GWRT.txt)
 
-**PPPoEについて**
-- PPPoEは、最も多く使われるインターネット接続方式で、認証機能のあるPPPをイーサネットで使用できるようにした技術
+**PPPoE(Point to Point Protocol over Ethernet)について**
+- PPPoEは、最も多く使用されているインターネット接続方式で、認証機能のあるPPPをイーサネットで使用できるようにした技術
 - サーバとクライアントで構成されており、プロバイダ側がPPPoEサーバになる
 - PPPoEサーバがパスワードによるクライアントの認証を行い、認証に成功するとグローバルIPアドレスをクライアントへ払い出して接続を可能にする
 
@@ -220,8 +220,8 @@ GWRT(config)#dialer-list 1 protocol ip permit
 GWRT(config)#interface E0/1
 GWRT(config-if)#pppoe enable
 GWRT(config-if)# pppoe-client dial-pool-number 1
-GWRT(config-if)# no shutdown enabling sss event trace
-
+GWRT(config-if)# no shutdown
+enabling sss event trace
 GWRT(config-if)# no shutdown 
 GWRT(config-if)#
 *Jun 22 08:28:12.636: %LINEPROTO-5-UPDOWN: Line protocol on Interface Virtual-Access1, changed state to up
@@ -235,8 +235,8 @@ GWRT(config)#end
 ```
 - 現状の設定では外部からの通信が可能で、不正アクセス等のセキュリティ問題が発生するため、ルータにCBAC（Context-Based Access Control）というステートフルインスペクションの設定を行う必要がある
 - ステートフルインスペクション → 内部から出て行った通信を確認し、それに対する戻りの通信を自動で判断し許可する機能
-- CBACの設定を行ったが、TABキーや？キーを押しても反応が無かったため、Cisco Modeling Labsによるコマンド制限があり、設定を適用できませんでした
-- セキュリティ強度は低くなりますが、deny ip any any によりPing疎通ができなかったため、拡張ACLを削除し、CBACの設定を省略した状態で検証を進めました
+- CBACの設定を試行したが、TABキーや？キーによるコマンド補完が機能しなかったため、Cisco Modeling Labsによるコマンド制限により適用できませんでした
+- セキュリティ強度は低くなりますが、deny ip any any によりPing疎通ができなかったため、拡張ACLを削除し、CBACの設定も省略した状態で検証を進めました
 
 **設定の確認**
 ```
@@ -372,6 +372,7 @@ end
           
 GWRT#
 ```
+
 **設定の保存**
 ```
 GWRT#copy run sta
@@ -437,8 +438,8 @@ GAIBURT(config-bba-group)#exit
 GAIBURT(config)#interface E0/1
 GAIBURT(config-if)#pppoe enable group PPPOE-GROUP1
 GAIBURT(config-if)# no shutdown
-GAIBURT(config-if)#enabling sss event trace
-
+GAIBURT(config-if)#
+enabling sss event trace
 GAIBURT(config-if)#
 *Jun 22 08:52:54.658: %LINK-5-UPDOWN: Interface Ethernet0/1, changed state to up
 *Jun 22 08:52:55.658: %LINEPROTO-5-UPDOWN: Line protocol on Interface Ethernet0/1, changed state to up
@@ -464,6 +465,7 @@ GAIBURT(config-if)#end
 GAIBURT#
 *Jun 22 09:01:26.612: %SYS-5-CONFIG_I: Configured from console by console
 ```
+
 **設定の確認**
 ```
 GAIBURT#show run
@@ -657,12 +659,11 @@ GWRT#
 ```
 - インターフェースのIPアドレスやリンクアップ状態を確認し、C（直接接続）がPPPoEで払い出しているグローバルIPアドレスであること、インターフェースがdialer1であることを確認
 
-### Proxyサーバ・WEBサーバ・DNSサーバの設定
+### Proxyサーバ・WEBサーバ・DNSサーバにIPアドレス・デフォルトゲートウェイを設定する
 
 ### Proxyサーバの設定
 [Proxyサーバの全ての設定ファイルを見る](/study04②/configs/server-config-Proxy_Server.txt)
 
-#### Proxyサーバ・WEBサーバ・DNSサーバにIPアドレス・デフォルトゲートウェイを設定する
 - Proxyサーバ → IPアドレス: 192.168.10.1　サブネットマスク: 255.255.255.0
 - Proxyサーバのデフォルトゲートウェイ（GWRT E0/0） → IPアドレス: 192.168.10.254　サブネットマスク: 255.255.255.0
 ```
@@ -747,13 +748,13 @@ default via 8.8.8.254 dev eth0
 Dns_Server:~$ 
 ```
 
-**Linuxコマンドの学び**
+**Linuxコマンドの学習内容**
 - sudo hostname [ホスト名] → ホスト名を変更
 - sudo ip addr add [IPアドレス/プレフィックス長] dev [インターフェース] → IPアドレスを設定
 - sudo ip link set [インターフェース] up → インターフェースを有効化
 - sudo ip route add default via [デフォルトゲートウェイのIPアドレス] → デフォルトゲートウェイを設定
-- ip addr show → IPアドレスの確認
-- ip route show → デフォルトゲートウェイの確認
+- ip addr show → IPアドレスを確認
+- ip route show → デフォルトゲートウェイを確認
 
 ### 検証①内部から外部への通信の際に、IPアドレスがNAT変換されていることを確認
 **Pingを使用してProxyサーバーから、WEBサーバへ疎通可能であることを確認**
@@ -777,7 +778,7 @@ PING 8.8.7.7 (8.8.7.7): 56 data bytes
 round-trip min/avg/max = 1.487/2.032/3.534 ms
 Proxy_Server:~$ 
 ```
-- パケットを11回送信し、11回受信し、0%の損失を確認
+- パケットロス0%で疎通が正常に行われることを確認
 
 **GWRTにNAPTの設定**
 ```
@@ -843,7 +844,7 @@ PING 8.8.7.7 (8.8.7.7): 56 data bytes
 round-trip min/avg/max = 1.273/1.865/2.349 ms
 Proxy_Server:~$ 
 ```
-- パケットを6回送信し、6回受信し、0%の損失を確認
+- パケットロス0%で疎通が正常に行われることを確認
 
 **Ping疎通確認後**
 ```
@@ -890,6 +891,7 @@ IP NAT debugging is off
 GWRT#
 GWRT#
 ```
+
 ```
 s: 送信元IPアドレス
 ->: 変換後IPアドレス
@@ -898,7 +900,7 @@ d: 宛先IPアドレス
 - #debug ip natコマンドの実行後、#no debug ip natコマンドで無効化
 - プライベートIPアドレス（192.168.10.1）が、グローバルIPアドレス（200.1.1.1）にNAPT変換されていることを確認
 - NAPTによって、1つのグローバルIPアドレスを使用し、多対1の通信ができるようになる
-- debugの実行結果から、想定通りNAPTが機能していることを確認
+- debugコマンドの実行結果から、想定通りNAPTが機能していることを確認
 
 ### 検証②内部に存在していないIPアドレスへの通信の際に、宛先NAT変換され、疎通が可能なことを確認
 **GWRTに宛先NATの設定**
@@ -954,7 +956,7 @@ PING 128.27.30.5 (128.27.30.5): 56 data bytes
 round-trip min/avg/max = 1.599/1.901/2.454 ms
 Proxy_Server:~$ 
 ```
-- パケットを12回送信し、12回受信し、0%の損失を確認
+- パケットロス0%で疎通が正常に行われることを確認
 
 **Ping疎通確認後**
 ```
@@ -1052,6 +1054,7 @@ GWRT#no debug ip nat
 IP NAT debugging is off
 GWRT#
 ```
+
 ```
 s: 送信元IPアドレス
 ->: 変換後IPアドレス
@@ -1062,11 +1065,12 @@ d: 宛先IPアドレス
 - これにより、導入機器のDNSサーバーの設定を変えることなく、本番環境の参照先のまま構築試験を行うことができる
 - 宛先NATは、実環境で使用することは少なく、社内検証の際に苦肉の策として使用することが多い
 - 例えば「参照させるDNSサーバが、社内検証環境にない」ような状況に使用する
+- 宛先NATは宛先のIPアドレスを変換する技術で、社内検証時に役に立つ
 
 ### 学習成果・気付き
 
 **技術的な学び**
-- PPPoEは、最も多く使われるインターネット接続方式で、認証機能のあるPPPをイーサネットで使用できるようにした技術
+- PPPoEは、最も多く使用されているインターネット接続方式で、認証機能のあるPPPをイーサネットで使用できるようにした技術
 - サーバとクライアントで構成されており、プロバイダ側がPPPoEサーバになる
 - PPPoEサーバがパスワードによるクライアントの認証を行い、認証に成功するとグローバルIPアドレスをクライアントへ払い出して接続を可能にする
 - 現状の設定では外部からの通信が可能で、不正アクセス等のセキュリティ問題が発生するため、ルータにCBAC（Context-Based Access Control）というステートフルインスペクションの設定を行う必要がある
@@ -1075,10 +1079,11 @@ d: 宛先IPアドレス
 - NAPTによって、1つのグローバルIPアドレスを使用し、多対1の通信ができるようになる
 - 宛先NATは、実環境で使用することは少なく、社内検証の際に苦肉の策として使用することが多い
 - 例えば「参照させるDNSサーバが、社内検証環境にない」ような状況に使用する
+- 宛先NATは宛先のIPアドレスを変換する技術で、社内検証時に役に立つ
 
 **トラブルシューティング**
 - CBAC設定時のコマンド制限: Cisco Modeling Labsの無料版では一部の高度なセキュリティ機能が制限される
-- NATテーブルの表示タイミング: 実際の通信が発生するまでNATテーブルは表示されない・Ping疎通を行う必要がある
+- NATテーブルの表示タイミング: 実際に通信が発生するまでNATテーブルは表示されず、Pingを使用した疎通確認が必要
 - NAPTの設定時「overload」のキーワード入力を忘れやすいため注意が必要
 - ルータの異なるインターフェースに同一ネットワークのIPアドレスは設定不可
 - 〈例〉GAIBURT E0/2 → IPアドレス: 8.8.8.254/24・GAIBURT E0/0 → IPアドレス: 8.8.8.253/24は設定不可×
@@ -1087,16 +1092,16 @@ d: 宛先IPアドレス
 **設定コマンドの学び**
 - #show ip nat translations → Ping疎通後にNATテーブルが表示される・通信が発生していない場合はNATテーブルが表示されない
 
-**Linuxコマンドの学び**
+**Linuxコマンドの学習内容**
 - sudo hostname [ホスト名] → ホスト名を変更
 - sudo ip addr add [IPアドレス/プレフィックス長] dev [インターフェース] → IPアドレスを設定
 - sudo ip link set [インターフェース] up → インターフェースを有効化
 - sudo ip route add default via [デフォルトゲートウェイのIPアドレス] → デフォルトゲートウェイを設定
-- ip addr show → IPアドレスの確認
-- ip route show → デフォルトゲートウェイの確認
+- ip addr show → IPアドレスを確認
+- ip route show → デフォルトゲートウェイを確認
 
 **所感**
 - 初めてLinuxコマンドを使用し、基本的なネットワーク設定をAIツール（ChatGPT・Claude）を活用しながら行ったが、Linuxの仕組みが複雑で理解するのが難しかった
-- ネットワークエンジニアの業務では、Linuxコマンドを頻繫に使用する機会があるようなので、LinuC Level1の資格取得を目指しながら、体系的な知識を習得する必要があることを実感
+- ネットワークエンジニアの業務では、Linuxコマンドを頻繁に使用する機会があるようなので、LinuC Level1の資格取得を目指しながら、体系的な知識を習得する必要があることを実感
 - 高度なネットワーク設定を学習する際に、実機シミュレーター（Cisco Modeling Labs・Cisco Packet Tracer）ではコマンド制限が多く発生するため、検証に限界があることを体感
-- 今後は有料版Cisco Modeling Labsまたは物理機器を用いた実機検証を予定
+- 今後は有料版Cisco Modeling Labs、または物理機器を用いた実機検証を行う予定
