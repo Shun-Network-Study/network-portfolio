@@ -28,7 +28,7 @@
 - **ネットワーク基礎**: OSI参照モデル、TCP/IP
 - **スイッチング**: VLAN、STP、EtherChannel
 - **ルーティング**: RIP、OSPF、EIGRP
-- **セキュリティ**: ACL、NAT/PAT
+- **セキュリティ**: ACL、NAT/NAPT
 
 ## 学習履歴
 - **学習期間**: 2024年10月〜2025年5月
