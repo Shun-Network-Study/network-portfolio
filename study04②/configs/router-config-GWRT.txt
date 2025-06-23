@@ -180,8 +180,8 @@ GWRT(config)#dialer-list 1 protocol ip permit
 GWRT(config)#interface E0/1
 GWRT(config-if)#pppoe enable
 GWRT(config-if)# pppoe-client dial-pool-number 1
-GWRT(config-if)# no shutdown enabling sss event trace
-
+GWRT(config-if)# no shutdown
+enabling sss event trace
 GWRT(config-if)# no shutdown 
 GWRT(config-if)#
 *Jun 22 08:28:12.636: %LINEPROTO-5-UPDOWN: Line protocol on Interface Virtual-Access1, changed state to up
