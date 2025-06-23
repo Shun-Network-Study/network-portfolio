@@ -14,7 +14,7 @@
 - [第2回：ルーティングの設定](/study02/README.md)
 - [第3回：アクセスリスト(ACL)の設定](/study03/README.md)
 - [第4回①：NATの設定(基本)](/study04①/README.md)
-- 第4回②：NATの設定(応用)
+- [第4回②：NATの設定(応用)](/study04②/README.md)
 - 第5回：DHCPの設定
 - 第6回：VLANの設定(基本)
 
