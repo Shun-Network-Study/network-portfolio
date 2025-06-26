@@ -233,7 +233,7 @@ SWA#
 #### 検証用PC（PC A・PC B）がIPアドレスを自動的に取得するため、デフォルトの設定の『Static』から『DHCP』に変更する
 ![検証用PC（PC A）『DHCP』に変更する](/study05/images/課題5_1.png)
 
-- 『DHCP』にチェックを入れた後、「DHCP failed. APIPA is being used.」と表示された
+- 『DHCP』に変更した後、「DHCP failed. APIPA is being used.」と表示された
 - CCNA白本で調査したところ、以下のことが判明
 - APIPA（Automatic Private IP Addressing）: DHCPを利用する環境で、DHCPが機能せずにIPアドレスが割り当てられない時に自動的にIPアドレス（リンクローカルアドレス）を割り当てる技術
 - リンクローカルアドレス: APIPAの仕組みによって割り当てられるIPアドレス
