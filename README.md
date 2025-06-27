@@ -16,7 +16,7 @@
 - [第4回①：NATの設定(基本)](/study04①/README.md)
 - [第4回②：NATの設定(応用)](/study04②/README.md)
 - [第5回：DHCPの設定](/study05/README.md)
-- 第6回：VLANの設定(基本)
+- [第6回：VLANの設定(基本)](/study06/README.md)
 
 ## 検証環境
 - Cisco Packet Tracer / Cisco Modeling Labs
