@@ -1,0 +1,190 @@
+Switch>en
+Switch#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+Switch(config)#hostname SWB
+SWB(config)#enable password Cisco
+SWB(config)#end
+SWB#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SWB#show run
+SWB#show running-config 
+Building configuration...
+
+Current configuration : 1101 bytes
+!
+version 15.0
+no service timestamps log datetime msec
+no service timestamps debug datetime msec
+no service password-encryption
+!
+hostname SWB
+!
+enable password Cisco
+!
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+interface FastEthernet0/1
+!
+interface FastEthernet0/2
+!
+interface FastEthernet0/3
+!
+interface FastEthernet0/4
+!
+interface FastEthernet0/5
+!
+interface FastEthernet0/6
+
+SWB#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SWB#
+SWB#
+
+SWB>en
+Password: 
+SWB#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SWB(config)#vlan 10
+SWB(config-vlan)#exit
+SWB(config)#vlan 20
+SWB(config-vlan)#exit
+SWB(config)#interface fastethernet 0/1
+SWB(config-if)#switchport mode access
+SWB(config-if)#switchport access vlan 10
+SWB(config-if)#exit
+SWB(config)#interface fastethernet 0/2
+SWB(config-if)#switchport mode access
+SWB(config-if)#switchport access vlan 20
+SWB(config-if)#end
+SWB#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SWB#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SWB(config)#interface fastethernet 0/24
+SWB(config-if)#switchport mode trunk
+SWB(config-if)#end
+SWB#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SWB#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/3, Fa0/4, Fa0/5, Fa0/6
+                                                Fa0/7, Fa0/8, Fa0/9, Fa0/10
+                                                Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20, Fa0/21, Fa0/22
+                                                Fa0/23, Gig0/1, Gig0/2
+10   VLAN0010                         active    Fa0/1
+20   VLAN0020                         active    Fa0/2
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+20   enet  100020     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+SWB#
+SWB#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SWB#
+SWB#
+
+SWB>en
+Password: 
+SWB#conf t
+Enter configuration commands, one per line.  End with CNTL/Z.
+SWB(config)#interface fastethernet 0/1
+SWB(config-if)#no switchport access vlan 10
+SWB(config-if)#switchport access vlan 30
+% Access VLAN does not exist. Creating vlan 30
+SWB(config-if)#exit
+SWB(config)#vlan 30
+SWB(config-vlan)#exit
+SWB(config)#vlan 40
+SWB(config-vlan)#exit
+SWB(config)#interface fastethernet 0/1
+SWB(config-if)#switchport access vlan 30
+SWB(config-if)#exit
+SWB(config)#interface fastethernet 0/2
+SWB(config-if)#no switchport access vlan 20
+SWB(config-if)#switchport access vlan 40
+SWB(config-if)#end
+SWB#
+%SYS-5-CONFIG_I: Configured from console by console
+
+SWB#show vlan
+
+VLAN Name                             Status    Ports
+---- -------------------------------- --------- -------------------------------
+1    default                          active    Fa0/3, Fa0/4, Fa0/5, Fa0/6
+                                                Fa0/7, Fa0/8, Fa0/9, Fa0/10
+                                                Fa0/11, Fa0/12, Fa0/13, Fa0/14
+                                                Fa0/15, Fa0/16, Fa0/17, Fa0/18
+                                                Fa0/19, Fa0/20, Fa0/21, Fa0/22
+                                                Fa0/23, Fa0/24, Gig0/1, Gig0/2
+10   VLAN0010                         active    
+20   VLAN0020                         active    
+30   VLAN0030                         active    Fa0/1
+40   VLAN0040                         active    Fa0/2
+1002 fddi-default                     active    
+1003 token-ring-default               active    
+1004 fddinet-default                  active    
+1005 trnet-default                    active    
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+1    enet  100001     1500  -      -      -        -    -        0      0
+10   enet  100010     1500  -      -      -        -    -        0      0
+20   enet  100020     1500  -      -      -        -    -        0      0
+30   enet  100030     1500  -      -      -        -    -        0      0
+40   enet  100040     1500  -      -      -        -    -        0      0
+1002 fddi  101002     1500  -      -      -        -    -        0      0   
+1003 tr    101003     1500  -      -      -        -    -        0      0   
+1004 fdnet 101004     1500  -      -      -        ieee -        0      0   
+1005 trnet 101005     1500  -      -      -        ibm  -        0      0   
+
+VLAN Type  SAID       MTU   Parent RingNo BridgeNo Stp  BrdgMode Trans1 Trans2
+---- ----- ---------- ----- ------ ------ -------- ---- -------- ------ ------
+
+Remote SPAN VLANs
+------------------------------------------------------------------------------
+
+Primary Secondary Type              Ports
+------- --------- ----------------- ------------------------------------------
+SWB#
+SWB#copy run sta
+Destination filename [startup-config]? 
+Building configuration...
+[OK]
+SWB#
+SWB#
