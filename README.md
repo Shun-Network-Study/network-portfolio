@@ -29,7 +29,7 @@
 - **ネットワーク基礎**: OSI参照モデル・TCP/IP
 - **スイッチング**: VLAN・STP・EtherChannel
 - **ルーティング**: スタティックルーティング・OSPF
-- **セキュリティ**: ACL・NAT/NAPT
+- **セキュリティ**: ACL・NAT（スタティックNAT・ダイナミックNAT・NAPT）
 
 ## 学習履歴
 - **学習期間**: 2024年10月〜2025年5月
@@ -41,4 +41,4 @@
   - シスコ技術者認定教科書 CCNA 完全合格テキスト&問題集［対応試験］200-301 （全3周実施）
   - 徹底攻略Cisco CCNA問題集［200-301 CCNA］対応 （全3周実施）
   - キタミ式イラストIT塾 基本情報技術者 令和06年 
-- **Cisco実機シミュレーター**: Cisco Packet Tracer / Cisco Modeling Labs
+- **Cisco実機シミュレーター**: Cisco Packet Tracer・Cisco Modeling Labs
