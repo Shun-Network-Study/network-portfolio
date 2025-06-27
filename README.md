@@ -25,10 +25,11 @@
 - CCNA（Cisco Certified Network Associate） 【2025年5月8日 取得】
 
 ## 技術スキル
-- **ネットワーク基礎**: OSI参照モデル、TCP/IP
-- **スイッチング**: VLAN、STP、EtherChannel
-- **ルーティング**: RIP、OSPF、EIGRP
-- **セキュリティ**: ACL、NAT/NAPT
+- **Cisco機器**: Layer2 Switch・Router
+- **ネットワーク基礎**: OSI参照モデル・TCP/IP
+- **スイッチング**: VLAN・STP・EtherChannel
+- **ルーティング**: スタティックルーティング・OSPF
+- **セキュリティ**: ACL・NAT/NAPT
 
 ## 学習履歴
 - **学習期間**: 2024年10月〜2025年5月
