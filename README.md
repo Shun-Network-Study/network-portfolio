@@ -11,21 +11,13 @@
 
 ## ハンズオン実践記録（クリックで各回の詳細へ）
 「ネットワーク構築マラソン」（株式会社CAIRN 運営）
-- [第1回：Cisco機器の基本設定](/study01/README.md)
-- ![構成図](/study01/images/topology1.png)
-- [第2回：ルーティングの設定](/study02/README.md)
-- ![構成図](/study02/images/topology2.png)
-- [第3回：アクセスリスト(ACL)の設定](/study03/README.md)
-- ![構成図](/study03/images/topology3.png)
-- [第4回①：NATの設定(基本)](/study04①/README.md)
-- ![構成図](/study04①/images/topology4.png)
-- [第4回②：NATの設定(応用)](/study04②/README.md)
-- ![構成図](/study04②/images/topology4②.png)
-- [第5回：DHCPの設定](/study05/README.md)
-- ![構成図](/study05/images/topology5.png)
-- [第6回：VLANの設定(基本)](/study06/README.md)
-- ![構成図](/study06/images/topology6_1.png)
-- ![構成図](/study06/images/topology6_2.png)
+- [第1回：Cisco機器の基本設定](/study01/README.md)<br>![構成図](/study01/images/topology1.png)
+- [第2回：ルーティングの設定](/study02/README.md)<br>![構成図](/study02/images/topology2.png)
+- [第3回：アクセスリスト(ACL)の設定](/study03/README.md)<br>![構成図](/study03/images/topology3.png)
+- [第4回①：NATの設定(基本)](/study04①/README.md)<br>![構成図](/study04①/images/topology4.png)
+- [第4回②：NATの設定(応用)](/study04②/README.md)<br>![構成図](/study04②/images/topology4②.png)
+- [第5回：DHCPの設定](/study05/README.md)<br>![構成図](/study05/images/topology5.png)
+- [第6回：VLANの設定(基本)](/study06/README.md)<br>![構成図](/study06/images/topology6_1.png)<br>![構成図](/study06/images/topology6_2.png)
 
 ## 検証環境
 - Cisco Packet Tracer / Cisco Modeling Labs
