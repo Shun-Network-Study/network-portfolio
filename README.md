@@ -2,7 +2,7 @@
 
 ## 自己紹介・ポートフォリオの概要
 前職は映像ディレクターとして従事しておりましたが、より専門性を高めながら長期的に社会を支える仕事に就きたいと考え、IT業界へのキャリアチェンジを決意しました。<br>
-重要な社会基盤を支えるネットワーク技術に大きな将来性を感じ、強い関心を持ったことから、独学で学習を進め、2025年5月にCCNA（Cisco Certified Network Associate）を取得し、未経験からネットワークエンジニアを志望しております。<br>
+重要な社会基盤を支えるネットワーク技術に将来性を感じ、強い関心を持ったことから、独学で学習を進め、2025年5月にCCNA（Cisco Certified Network Associate）を取得し、未経験からネットワークエンジニアを志望しております。<br>
 現在は、ネットワーク構築スキルをさらに高めるため、Cisco Packet TracerとCisco Modeling Labsを用いたハンズオン学習に取り組んでいます。
 
 このリポジトリでは、「ネットワーク構築マラソン」（株式会社CAIRN 運営）に取り組み、ネットワーク構成図、設定内容、検証結果などをまとめています。<br>
@@ -16,7 +16,7 @@
 - [第2回：ルーティングの設定](/study02/README.md)<br>![構成図](/study02/images/topology2.png)
 - [第3回：アクセスリスト(ACL)の設定](/study03/README.md)<br>![構成図](/study03/images/topology3.png)
 - [第4回①：NATの設定(基本)](/study04①/README.md)<br>![構成図](/study04①/images/topology4.png)
-- [第4回②：NATの設定(応用)](/study04②/README.md)<br>![構成図](/study04②/images/topology4②.png)
+- [第4回②：NATの設定(応用)](/study04②/README.md)<br>![構成図](/study04②/images/topology4_2.png)
 - [第5回：DHCPの設定](/study05/README.md)<br>![構成図](/study05/images/topology5.png)
 - [第6回：VLANの設定(基本)](/study06/README.md)<br>![構成図](/study06/images/topology6_1.png)<br>![構成図](/study06/images/topology6_2.png)
 
