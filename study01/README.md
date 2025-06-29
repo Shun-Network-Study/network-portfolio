@@ -440,11 +440,11 @@ RTA#
 ![PCからルータへリモートログインが可能なことを確認](/study01/images/課題1_4.png)
 
 ### Telnetでのログイン成功後、設定したパスワードでログイン
-- 「Password:Cisco」を入力
+- 「Password:Cisco」を入力<br>
 ![Telnetでのログイン成功後、設定したパスワードでログイン](/study01/images/課題1_5.png)
 
 ### enableパスワードで特権モードへ移行
-- 「Password:Cisco」を入力
+- 「Password:Cisco」を入力<br>
 ![enableパスワードで特権モードへ移行](/study01/images/課題1_6.png)
 
 ### 学習成果・気付き
