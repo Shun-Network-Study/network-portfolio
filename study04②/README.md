@@ -24,7 +24,7 @@
 - **クロスケーブル** × 4本
 
 ## 構成図
-![構成図](/study04②/images/topology4②.png)
+![構成図](/study04②/images/topology4_2.png)
 
 ## 設定内容
 
