@@ -25,6 +25,7 @@
 
 ## 保有資格
 - CCNA（Cisco Certified Network Associate） 【2025年5月8日 取得】
+- 実用英語技能検定2級
 
 ## 技術スキル
 - **Cisco機器**: Layer2 Switch・Router・基本的なCLI操作
